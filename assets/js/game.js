@@ -136,27 +136,23 @@ var endGame = function() {
 var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
-        'Would you like to REFILL your health, UPGRADE your attack, or  LEAVE the store? Please enter one "", "UPGRADE", or "LEAVE" to make a choice.'
+        'Would you like to REFILL your health, UPGRADE your attack, or  LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE.'
         );
+    shopOptionPrompt = parseInt(shopOptionPrompt);
     // use switch to carry out action
     switch (shopOptionPrompt) {
-        case "REFILL": // new case
-        case "refill":
+        case 1:
             playerInfo.refillHealth();
             break;
-        case "UPGRADE": // new case
-        case "upgrade":
+        case 2:
             playerInfo.upgradeAttack();
             break;
-        case "LEAVE": // new case
-        case "leave":
+        case 3:
             window.alert("leaving the store.");
-
             // do nothing, so function will end
             break;
-            default:
+        default:
             window.alert("You did not pick a valid option. Try again.");
-
             //call shop() again to force olayer to pick a valid option
             shop();
             break;
@@ -177,6 +173,7 @@ var getPlayerName = function() {
        name = prompt("What is your robot's name?"); 
     }
     console.log("Your robot's name is " + name);
+    return name;
 };
 
 var playerInfo = {
